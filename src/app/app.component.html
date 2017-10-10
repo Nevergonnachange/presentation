@@ -1,5 +1,6 @@
 <div class="content-wrapper" fxLayout="column">
-    <mat-toolbar>
+    <mat-toolbar *ngIf="showToolbar"
+                 [matTooltip]="'Press \'S\' to toggle toolbar visiblity!'">
 
         <span>Presentation</span>
 

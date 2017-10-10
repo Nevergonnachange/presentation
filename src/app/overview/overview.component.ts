@@ -10,7 +10,14 @@ export class OverviewComponent implements OnInit {
     public presentations: any[] = null;
 
     constructor() {
-        this.presentations = [{name: '1'}, {name: '2'}]
+        this.presentations = (require as any).context('../../presentations', true, /\.json/)
+            .keys()
+            .map(val => ({
+                ...require(`../../presentations${val.substring(1)}`),
+                path: `${val.substring(1).replace('/metadata.json', '')}`
+            }));
+        console.log(this.presentations);
+
     }
 
   ngOnInit() {

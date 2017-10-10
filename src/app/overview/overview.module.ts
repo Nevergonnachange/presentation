@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatButtonModule, MatIconModule, MatListModule } from '@angular/material';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { RouterModule } from '@angular/router';
 
 import { OverviewComponent } from './overview.component';
 
@@ -11,7 +12,8 @@ import { OverviewComponent } from './overview.component';
       MatListModule,
       MatIconModule,
       MatButtonModule,
-      FlexLayoutModule
+      FlexLayoutModule,
+      RouterModule
   ],
   declarations: [OverviewComponent]
 })

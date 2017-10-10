@@ -6,10 +6,12 @@ import { OverviewRoutes } from '../overview/overview.routes';
 import { PresentationRoutes } from '../presentation/presentation.routes';
 import { OverviewModule } from '../overview/overview.module';
 import { PresentationModule } from '../presentation/presentation.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   imports: [
       BrowserModule,
+      BrowserAnimationsModule,
       RouterModule.forRoot([
           ...OverviewRoutes,
           ...PresentationRoutes

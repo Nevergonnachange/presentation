@@ -1,11 +1,12 @@
-import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { MatButtonModule, MatCardModule, MatToolbarModule } from '@angular/material';
+import { MatButtonModule, MatCardModule, MatToolbarModule, MatTooltipModule } from '@angular/material';
+import { RouterModule } from '@angular/router';
+import { FlexLayoutModule } from '@angular/flex-layout';
+import { CommonModule } from '@angular/common';
 
 import { AppComponent } from './app.component';
 import { CoreModule } from './core/core.module';
-import { RouterModule } from '@angular/router';
-import { FlexLayoutModule } from '@angular/flex-layout';
+
 
 @NgModule({
   declarations: [
@@ -13,9 +14,11 @@ import { FlexLayoutModule } from '@angular/flex-layout';
   ],
   imports: [
       CoreModule,
+      CommonModule,
       MatToolbarModule,
       MatButtonModule,
       MatCardModule,
+      MatTooltipModule,
       RouterModule,
       FlexLayoutModule
   ],

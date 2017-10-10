@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Renderer2 } from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +6,15 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'app';
+
+    public showToolbar: boolean = true;
+
+    constructor(private _renderer: Renderer2) {
+        this._renderer.listen('document', 'keypress', (event: KeyboardEvent) => {
+            console.log(event);
+            if (event.keyCode === 115) {
+                this.showToolbar = !this.showToolbar;
+            }
+        })
+    }
 }

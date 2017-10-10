@@ -1,6 +1,7 @@
 <mat-list>
     <h3 mat-subheader>Presentation</h3>
-    <mat-list-item *ngFor="let presentation of presentations">
+    <mat-list-item *ngFor="let presentation of presentations"
+                   [routerLink]="['/presentation', presentation.path]">
         <mat-icon mat-list-icon>folder</mat-icon>
         <h4 mat-line>{{presentation.name}}</h4>
         <p mat-line> {{presentation.created | date}} </p>
