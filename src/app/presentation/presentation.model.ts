@@ -6,7 +6,7 @@ export class PresentationNode {
 
     set html(s: string) {
         if (!s) { return; }
-        this._html = require(`../../presentations/angular-introduction/${s}`);
+        this._html = require(`../../presentations${this._root}/${s}`);
     }
     get html(): string { return this._html; }
 
@@ -18,7 +18,7 @@ export class PresentationNode {
     }
     get name():  string { return this._name; }
 
-    constructor(n: string = null, h: string = '', c: PresentationNode[] = []) {
+    constructor(n: string = null, private _root: string = '', h: string = '', c: PresentationNode[] = []) {
         this.name = n;
         this.children = c;
         this.html = h;

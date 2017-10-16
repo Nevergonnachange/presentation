@@ -19,9 +19,7 @@ export class PresentationComponent implements OnInit {
                 private _el: ElementRef) {}
 
     public ngOnInit(): void {
-        console.log(1);
         this._buildPresentation();
-        console.log(10)
         this._appendNodesToDOM(this.presentation, this._el.nativeElement.querySelector('.slides'));
         this._initializeReveal();
     }
@@ -45,17 +43,14 @@ export class PresentationComponent implements OnInit {
     }
 
     private _buildPresentation() {
-        console.log((require as any).context(`../../presentations`, true, /\.html/).keys());
-
-
         (require as any).context(`../../presentations`, true, /\.html/)
             .keys()
             .filter(val => val.startsWith(`.${this._route.snapshot.params.path}`))
-            .map(val => val.replace('./angular-introduction/', ''))
+            .map(val => val.replace(`.${this._route.snapshot.params.path}/`, ''))
             .forEach(path => {
                 let nodeList: PresentationNode[] = this.presentation;
                 path.split('/').forEach(subPath => {
-                    const node: PresentationNode = new PresentationNode(subPath);
+                    const node: PresentationNode = new PresentationNode(subPath, this._route.snapshot.params.path);
                     if (subPath.endsWith('.html')) {
                         node.html = path;
                         nodeList.push(node);
