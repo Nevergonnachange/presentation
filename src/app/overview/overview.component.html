@@ -1,9 +1,29 @@
-<mat-list>
-    <h3 mat-subheader>Presentation</h3>
-    <mat-list-item *ngFor="let presentation of presentations"
-                   [routerLink]="['/presentation', presentation.path]">
-        <mat-icon mat-list-icon>folder</mat-icon>
-        <h4 mat-line>{{presentation.name}}</h4>
-        <p mat-line> {{presentation.created | date}} </p>
-    </mat-list-item>
-</mat-list>
+<div fxLayout="row">
+    <mat-form-field fxFlex floatPlaceholder="never">
+        <input matInput #filter
+               placeholder="Filter Presentations">
+    </mat-form-field>
+</div>
+
+<mat-table #table [dataSource]="dataSource">
+
+    <ng-container matColumnDef="name">
+        <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
+        <mat-cell *matCellDef="let row"> {{row.name}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="created">
+        <mat-header-cell *matHeaderCellDef> Angelegt </mat-header-cell>
+        <mat-cell *matCellDef="let row"> {{row.created}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="author">
+        <mat-header-cell *matHeaderCellDef> Author </mat-header-cell>
+        <mat-cell *matCellDef="let row"> {{row.author}} </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"
+             [routerLink]="['/presentation', row.path]"></mat-row>
+
+</mat-table>

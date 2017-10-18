@@ -11,8 +11,7 @@ export class AppComponent {
 
     constructor(private _renderer: Renderer2) {
         this._renderer.listen('document', 'keypress', (event: KeyboardEvent) => {
-            console.log(event);
-            if (event.keyCode === 115) {
+            if (event.keyCode === 17 && event.ctrlKey) {
                 this.showToolbar = !this.showToolbar;
             }
         })
