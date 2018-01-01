@@ -2,6 +2,8 @@ import { Component, ElementRef, OnInit, Renderer2 } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
 import * as Reveal from 'reveal.js';
+import * as hljs from 'highlight.js';
+import 'reveal.js/lib/js/head.min.js';
 
 import { PresentationNode } from './presentation.model';
 
@@ -38,7 +40,12 @@ export class PresentationComponent implements OnInit {
     private _initializeReveal() {
         Reveal.initialize({
             history: true,
-            progress: true
+            progress: true,
+            dependencies: [
+                // Syntax highlight for <code> elements
+                { src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+
+            ]
         });
     }
 
