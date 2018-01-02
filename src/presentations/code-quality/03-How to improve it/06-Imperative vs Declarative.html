@@ -1,23 +1,15 @@
 <h2>Imperative vs Declarative</h2>
 
-<table>
-    <tr>
-        <td style="width: 50%">Imperative</td>
-        <td>Declarative</td>
-    </tr>
-    <tr>
-        <td>
-            I see that table located under the Gone Fishin’ sign is empty. My husband and I are going to walk over there and sit down
-        </td>
-        <td>
-            Table for two, please.
-        </td>
-    </tr>
 
-    <tr>
+<div class="grid-container-2" style="font-size: 0.8em">
+    <span>Imperative</span>
+    <span>Declarative</span>
 
-        <td>
-            <pre>
+    <span>I see that table located under the Gone Fishin’ sign is empty. My husband and I are going to walk over there and sit down</span>
+    <span>Table for two, please</span>
+</div>
+
+<pre>
 <code data-trim data-noescape>
     function double (arr) {
         let results = []
@@ -26,20 +18,9 @@
         }
         return results
     }
-</code>
-</pre>
-        </td>
 
-        <td>
-        <pre>
-<code data-trim data-noescape>
-    function double (arr) {
+     function double (arr) {
         return arr.map((item) => item * 2)
     }
 </code>
 </pre>
-        </td>
-    </tr>
-
-</table>
-
