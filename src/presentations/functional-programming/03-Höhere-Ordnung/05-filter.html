@@ -1,0 +1,24 @@
+<h2>Filter</h2>
+
+<p>
+    filter() erstellt ein neues Array, das alle Elemente enthält, die den Test,
+    der in der angegebenen Callback Funktion implementiert ist, bestehen.
+</p>
+
+<pre>
+<code>
+    const tasks: {name: string, duration: number}[] = [{
+        'name'     : 'Write for Envato Tuts+',
+        'duration' : 120
+    }, {
+        'name'     : 'Work out',
+        'duration' : 60
+    },{
+        'name'     : 'Procrastinate on Duolingo',
+        'duration' : 240
+    }];
+
+    const difficult_tasks: {name: string, duration: number}[]
+        = tasks.filter(task => task.duration >= 120);
+</code>
+</pre>
