@@ -1,12 +1,13 @@
+import { join, resolve, sep } from 'path';
+import { Observable } from 'rxjs/Observable';
+import { concatMap, map } from 'rxjs/operators';
 import * as sanitize from 'sanitize-filename';
 import { Argv } from 'yargs';
+
+import { rootDir } from '../constants';
+import { exists, mkdir, readdir, writeMetadata } from '../helpers/node-wrappers';
+import { printError, printSuccess } from '../helpers/print';
 import { IChapterArgs } from './chapter-interface';
-import { join, resolve, sep } from 'path';
-import { printSuccess, printError } from '../helpers/print';
-import { slideDir, rootDir } from '../constants';
-import { exists, mkdir, writeMetadata, readdir } from '../helpers/node-wrappers';
-import { concatMap, tap } from 'rxjs/operators';
-import { Observable } from 'rxjs/Observable';
 
 export function chapterBuilder(args: Argv): Argv {
     return args;
@@ -21,12 +22,18 @@ export function chapterHandler(args: IChapterArgs): void {
 
     exists(talkDir)
         .pipe(
-            concatMap(() => readChapters(talkDir)),
-            tap(f => console.log(f)),
+            concatMap(() => readdir(talkDir)),
+            map(dirs => getNextIndex(dirs, args.index)),
+            concatMap(index => insertAtIndex(talkDir, chapterFolder, index)),
+
             concatMap(() => mkdir(join(talkDir, chapterFolder))),
+
             concatMap(() => writeChapterMetadata(chapterDir, chapterName))
         )
         .subscribe(printSuccess, printError);
+}
+
+function(talkDir: string, chapterFolder: string, index: number) {
 
 }
 
@@ -40,6 +47,6 @@ function writeChapterMetadata(folder, name: string): Observable<string> {
     );
 }
 
-function readChapters(dir: string): Observable<string[]> {
-    return readdir(dir);
+function getNextIndex(dirs: string[], index: number | undefined): number {
+    return index ? index : dirs.length;
 }

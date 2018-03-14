@@ -1,0 +1,15 @@
+<h2>Map Lösung</h2>
+
+<pre>
+<code>
+    const persons: {firstname: string, lastname: string}[] =
+    [
+        {firstname : "Malcom", lastname: "Reynolds"},
+        {firstname : "Kaylee", lastname: "Frye"},
+        {firstname : "Jayne", lastname: "Cobb"}
+    ];
+
+    const fullNames: string[] = persons
+        .map(person => person.firstname + ' ' + person.lastname);
+</code>
+</pre>

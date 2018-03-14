@@ -1,0 +1,59 @@
+/* You can add global styles to this file, and also import other style files */
+
+@import '~@angular/material/theming';
+// Plus imports for other components in your app.
+
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// **Be sure that you only ever include this mixin once!**
+@include mat-core();
+
+// Define an alternate dark theme.
+$dark-primary: mat-palette($mat-blue-grey);
+$dark-accent:  mat-palette($mat-amber, A200, A100, A400);
+$dark-warn:    mat-palette($mat-deep-orange);
+$dark-theme:   mat-dark-theme($dark-primary, $dark-accent, $dark-warn);
+
+@include angular-material-theme($dark-theme);
+
+body {
+    height: 100vh;
+    width: 100vw;
+    margin: 0;
+}
+
+@import '~reveal.js/css/reveal.css';
+@import '~reveal.js/css/theme/black.css';
+@import '~reveal.js/lib/css/zenburn.css';
+
+
+.progress {
+    height: 5px!important;
+
+    & span {
+        background-color: green!important;
+    }
+}
+
+blockquote {
+    border-left: 10px solid #ccc !important;
+    padding: 0.5em 10px !important;
+    quotes: "“" "”" !important;
+}
+blockquote:before {
+    color: #ccc;
+    content: open-quote;
+    font-size: 4em;
+    line-height: 0.1em;
+    margin-right: 0.25em;
+    vertical-align: -0.4em;
+}
+blockquote p {
+    display: inline;
+}
+
+.grid-container-2 {
+    display: grid;
+    grid-gap: 0.5em;
+    grid-template-columns: auto auto;
+}

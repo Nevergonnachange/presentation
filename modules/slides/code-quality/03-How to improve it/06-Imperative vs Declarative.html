@@ -1,0 +1,26 @@
+<h2>Imperative vs Declarative</h2>
+
+
+<div class="grid-container-2" style="font-size: 0.8em">
+    <span>Imperative</span>
+    <span>Declarative</span>
+
+    <span>I see that table located under the Gone Fishin’ sign is empty. My husband and I are going to walk over there and sit down</span>
+    <span>Table for two, please</span>
+</div>
+
+<pre>
+<code data-trim data-noescape>
+    function double (arr) {
+        let results = []
+        for (let i = 0; i < arr.length; i++){
+            results.push(arr[i] * 2)
+        }
+        return results
+    }
+
+     function double (arr) {
+        return arr.map((item) => item * 2)
+    }
+</code>
+</pre>
