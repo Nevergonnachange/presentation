@@ -19,6 +19,14 @@ export class PresentationComponent implements OnInit {
     constructor(private _route: ActivatedRoute,
                 private _renderer: Renderer2,
                 private _el: ElementRef) {
+
+        const styles: string = window.location.search.match( /print-pdf/gi )
+            ? require('reveal.js/css/print/pdf.css')
+            : require('reveal.js/css/print/paper.css');
+        const style: HTMLStyleElement = document.createElement('style');
+        style.type = 'text/css';
+        style.appendChild(document.createTextNode(styles));
+        document.head.appendChild(style);
     }
 
     public ngOnInit(): void {
