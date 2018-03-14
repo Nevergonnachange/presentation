@@ -1,9 +1,9 @@
 import { Component, ElementRef, OnInit, Renderer2 } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
-import * as Reveal from 'reveal.js';
-import * as hljs from 'highlight.js';
 import 'reveal.js/lib/js/head.min.js';
+import * as hljs from 'highlight.js';
+import * as Reveal from 'reveal.js';
 
 import { PresentationNode } from './presentation.model';
 
@@ -18,7 +18,9 @@ export class PresentationComponent implements OnInit {
 
     constructor(private _route: ActivatedRoute,
                 private _renderer: Renderer2,
-                private _el: ElementRef) {}
+                private _el: ElementRef) {
+        console.log(Reveal);
+    }
 
     public ngOnInit(): void {
         this._buildPresentation();
@@ -38,11 +40,11 @@ export class PresentationComponent implements OnInit {
     }
 
     private _initializeReveal() {
+        if (Reveal.isReady()) { location.reload(true); }
         Reveal.initialize({
             history: true,
             progress: true,
             dependencies: [
-                // Syntax highlight for <code> elements
                 { src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
 
             ]
@@ -71,7 +73,7 @@ export class PresentationComponent implements OnInit {
                             nodeList = node.children;
                         }
                     }
-                })
+                });
             });
     }
 }

@@ -1,0 +1,15 @@
+<div class="content-wrapper" fxLayout="column">
+    <mat-toolbar *ngIf="showToolbar"
+                 [matTooltip]="'Press \'CTRL+q\' to toggle toolbar visiblity!'">
+
+        <span>Presentation</span>
+
+        <a mat-button routerLink="overview">Overview</a>
+
+    </mat-toolbar>
+
+    <mat-card fxFlex>
+        <router-outlet></router-outlet>
+    </mat-card>
+</div>
+

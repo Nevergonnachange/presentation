@@ -7,7 +7,7 @@
 
 const yargs                 = require('yargs/yargs')(process.argv.slice(2));
 
-interface ICmdArguments { apps: string[]; commands: string[]; basedir: string }
+interface ICmdArguments { apps: string[]; commands: string[]; basedir: string; }
 
 const argv: ICmdArguments       = readCmdArguments();
 
@@ -15,7 +15,7 @@ function readCmdArguments(): ICmdArguments {
     return yargs
         .option('generate', {
             alias: 'g',
-            describe: 'Command to be run.',
+            describe: 'Component you want to generate',
             demand: true,
         })
         .option('commands', {

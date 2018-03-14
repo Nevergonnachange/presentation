@@ -1,0 +1,25 @@
+{
+  "extends": "../../tsconfig.json",
+  "compilerOptions": {
+   "target": "es5",
+   "lib": [
+     "es2017","es2015","es6"
+    ],
+   "module": "commonjs",
+   "outDir": "./dist",
+   "sourceMap": false,
+  },
+  "include": [
+    "src/**/*.ts"
+   ],
+   "typeRoots": [
+    "../../node_modules/@types"
+  ],
+  "types": [
+    "yargs",
+    "node"
+  ],
+  "exclude": [
+    "../../node_modules",
+   ]
+}

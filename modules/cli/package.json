@@ -1,0 +1,18 @@
+{
+  "name": "presentation-cli",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dist/main.js",
+  "entry point": "dist/main.js",
+  "scripts": {
+    "build": "tsc",
+    "ts-node": "ts-node src/main.ts"
+  },
+  "bin": {
+    "presentation": "dist/main.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+  }
+}
