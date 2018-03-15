@@ -13,8 +13,13 @@ $dark-primary: mat-palette($mat-blue-grey);
 $dark-accent:  mat-palette($mat-amber, A200, A100, A400);
 $dark-warn:    mat-palette($mat-deep-orange);
 $dark-theme:   mat-dark-theme($dark-primary, $dark-accent, $dark-warn);
+$light-theme:  mat-light-theme($dark-primary, $dark-accent, $dark-warn);
 
-@include angular-material-theme($dark-theme);
+@include angular-material-theme($light-theme);
+
+.dark-theme {
+    @include angular-material-theme($dark-theme);
+}
 
 body {
     height: 100vh;
@@ -23,7 +28,6 @@ body {
 }
 
 @import '~reveal.js/css/reveal.css';
-@import '~reveal.js/css/theme/black.css';
 @import '~reveal.js/lib/css/zenburn.css';
 
 

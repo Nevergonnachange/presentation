@@ -5,7 +5,18 @@
         <span>Presentation</span>
 
         <a mat-button routerLink="overview">Overview</a>
+        <span fxFlex></span>
 
+
+        <span fxLayout="row" fxLayoutGap="18px">
+            <span>
+                <mat-slide-toggle (change)="togglePrintView($event.checked)" [(ngModel)]="printView">Druck Ansicht</mat-slide-toggle>
+            </span>
+
+            <span>
+                <mat-slide-toggle (change)="toggleTheme($event.checked)" [(ngModel)]="darkTheme">Dark Theme</mat-slide-toggle>
+            </span>
+        </span>
     </mat-toolbar>
 
     <mat-card fxFlex>

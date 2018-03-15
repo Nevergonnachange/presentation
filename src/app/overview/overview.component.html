@@ -24,6 +24,6 @@
 
     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
     <mat-row *matRowDef="let row; columns: displayedColumns;"
-             [routerLink]="['/presentation', row.path]"></mat-row>
+             [routerLink]="['/presentation', row.path.substring(1)]"></mat-row>
 
 </mat-table>

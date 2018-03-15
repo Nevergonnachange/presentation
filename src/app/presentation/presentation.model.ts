@@ -6,7 +6,7 @@ export class PresentationNode {
 
     set html(s: string) {
         if (!s) { return; }
-        this._html = require(`../../../modules/slides${this._root}/${s}`);
+        this._html = require(`../../../modules/slides/${this._root}/${s}`);
     }
     get html(): string { return this._html; }
 

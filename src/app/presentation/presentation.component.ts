@@ -19,19 +19,20 @@ export class PresentationComponent implements OnInit {
     constructor(private _route: ActivatedRoute,
                 private _renderer: Renderer2,
                 private _el: ElementRef) {
-
+        /*
         const styles: string = window.location.search.match( /print-pdf/gi )
             ? require('reveal.js/css/print/pdf.css')
-            : require('reveal.js/css/print/paper.css');
+            : '';
         const style: HTMLStyleElement = document.createElement('style');
         style.type = 'text/css';
         style.appendChild(document.createTextNode(styles));
         document.head.appendChild(style);
+        */
+       console.log(Reveal);
     }
 
     public ngOnInit(): void {
         this._buildPresentation();
-        console.log(this.presentation);
         this._appendNodesToDOM(this.presentation, this._el.nativeElement.querySelector('.slides'));
         this._initializeReveal();
     }
@@ -50,7 +51,7 @@ export class PresentationComponent implements OnInit {
     private _initializeReveal() {
         if (Reveal.isReady()) { location.reload(true); }
         Reveal.initialize({
-            history: true,
+            history: false,
             progress: true,
             dependencies: [
                 { src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
@@ -62,8 +63,8 @@ export class PresentationComponent implements OnInit {
     private _buildPresentation() {
         (require as any).context(`../../../modules/slides`, true, /\.html/)
             .keys()
-            .filter(val => val.startsWith(`.${this._route.snapshot.params.path}`))
-            .map(val => val.replace(`.${this._route.snapshot.params.path}/`, ''))
+            .filter(val => val.startsWith(`./${this._route.snapshot.params.path}`))
+            .map(val => val.replace(`./${this._route.snapshot.params.path}/`, ''))
             .forEach(path => {
                 let nodeList: PresentationNode[] = this.presentation;
                 path.split('/').forEach(subPath => {
